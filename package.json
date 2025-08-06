@@ -13,13 +13,17 @@
     "dev:web": "yarn workspace @railguard/web start",
     "dev:api": "yarn workspace @railguard/api dev",
     "dev:mobile": "yarn workspace @railguard/mobile start",
-    "build": "yarn workspaces run build",
+    "build:types": "yarn workspace @railguard/types build",
+    "build:libs": "yarn workspace @railguard/types build",
+    "build": "yarn workspaces run -R build",
     "test": "yarn workspaces run test",
     "lint": "yarn workspaces run lint",
     "type-check": "yarn workspaces run type-check",
+    "clean": "rm -rf node_modules && rm -rf apps/*/node_modules && rm -rf libs/*/node_modules",
+    "clean:cache": "yarn clean && rm -rf ~/.cache/yarn && rm -rf apps/*/.expo && rm -rf apps/*/dist && rm -rf apps/*/build",
+    "clean:all": "yarn clean && yarn clean:cache && rm -rf yarn.lock && rm -rf apps/*/yarn.lock && rm -rf libs/*/yarn.lock",
     "reset": "yarn clean && yarn install",
-    "clean": "rm -rf node_modules && rm -rf apps/*/node_modules && rm -rf libs/*/node_modules && rm -rf yarn.lock && rm -rf apps/*/yarn.lock && rm -rf libs/*/yarn.lock",
-    "clean:cache": "yarn clean && rm -rf ~/.cache/yarn && rm -rf apps/*/.expo && rm -rf apps/*/dist && rm -rf apps/*/build"
+    "hard-reset": "yarn clean:all && yarn install"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
