@@ -1,0 +1,20 @@
+{
+  "name": "@railguard/api",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon",
+    "test": "NODE_ENV=testing jest",
+    "lint": "eslint . --ext .ts,.js",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@railguard/types": "1.0.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "pino-http": "^10.5.0"
+  }
+}
