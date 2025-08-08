@@ -10,7 +10,7 @@ coverage/
 apps/**/coverage/
 libs/**/coverage/
 
-*/.env
+**/*/.env
 
 .vscode/
 .idea/

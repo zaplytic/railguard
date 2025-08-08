@@ -1,6 +1,6 @@
 import { pinoHttp } from "pino-http";
 import pino from "pino";
-import { LOG_LEVEL, ENVIRONMENT } from "@/config/secrets";
+import { ENVIRONMENT } from "@/config/secrets";
 
 const logTarget = ENVIRONMENT === "development" ? "pino-pretty" : "pino/file";
 
@@ -25,7 +25,7 @@ const transport = pino.transport({
 
 const logger = pinoHttp(
   {
-    level: LOG_LEVEL,
+    level: "info",
     timestamp: pino.stdTimeFunctions.isoTime,
   },
   pino.multistream([transport]),
