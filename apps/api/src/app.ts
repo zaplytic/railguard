@@ -1,10 +1,10 @@
 import express, { Express } from "express";
 import rootRouter from "@/routers";
-import logger from "@/config/logger";
+import { httpLogger } from "@/config/logger";
 
 const app: Express = express();
 
-app.use(logger);
+app.use(httpLogger);
 
 app.use("/api", rootRouter);
 

@@ -23,12 +23,14 @@ const transport = pino.transport({
   ],
 });
 
-const logger = pinoHttp(
+export const httpLogger = pinoHttp(
   {
     level: "info",
     timestamp: pino.stdTimeFunctions.isoTime,
   },
   pino.multistream([transport]),
 );
+
+const logger = httpLogger.logger;
 
 export default logger;

@@ -5,7 +5,7 @@ import { healthCheckService } from "@/services";
 
 app.listen(secrets.PORT, async () => {
   await healthCheckService.dbConnectionCheck();
-  logger.logger.info(
+  logger.info(
     `Server is running on port ${secrets.PORT} in ${secrets.ENVIRONMENT}`,
   );
 });
