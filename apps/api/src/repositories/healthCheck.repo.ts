@@ -1,6 +1,11 @@
+import { singleton } from "tsyringe";
+
 import db from "@/db";
 
-export default class HealthCheckRepo {
+@singleton()
+export default class HealthCheckRepository {
+  constructor() {}
+
   async dbSelectOne(): Promise<void> {
     await db.execute("SELECT 1");
   }

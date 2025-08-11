@@ -11,7 +11,6 @@ module.exports = [
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module'
-        // Remove the project line temporarily
       },
       globals: {
         console: 'readonly',
@@ -32,8 +31,9 @@ module.exports = [
       '@typescript-eslint': typescript
     },
     rules: {
+      '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/no-unused-vars': 'error',
-      '@typescript-eslint/explicit-function-return-type': 'off'
+      'no-unused-vars': 'off'
     }
   }
 ];

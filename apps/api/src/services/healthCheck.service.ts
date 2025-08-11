@@ -1,13 +1,16 @@
-import logger from "@/config/logger";
-import { DATABASE_URL } from "@/config/secrets";
-import { healthCheckRepo } from "@/repositories";
 import { DrizzleError, DrizzleQueryError } from "drizzle-orm";
+import { singleton } from "tsyringe";
 
+import logger from "@/config/logger";
+import HealthCheckRepository from "@/repositories/healthCheck.repo";
+
+@singleton()
 export default class HealthCheckService {
+  constructor(private readonly healthCheckRepo: HealthCheckRepository) {}
+
   async dbConnectionCheck(): Promise<void> {
-    logger.info(DATABASE_URL);
     try {
-      await healthCheckRepo.dbSelectOne();
+      await this.healthCheckRepo.dbSelectOne();
       logger.info("Database connected successfully");
     } catch (error) {
       if (error instanceof DrizzleError) {
