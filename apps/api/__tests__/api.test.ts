@@ -1,6 +1,8 @@
 import app from "@/app";
 import { ServiceHealth } from "@railguard/types";
 
+import { pool } from "@/db";
+
 import request from "supertest";
 
 describe("Health Check API", () => {
@@ -26,5 +28,9 @@ describe("Health Check API", () => {
       expect(service).toHaveProperty("message");
       expect(service).toHaveProperty("responseTime");
     });
+  });
+
+  afterAll(async () => {
+    await pool.end();
   });
 });

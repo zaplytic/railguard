@@ -9,3 +9,6 @@ export const ENVIRONMENT = process.env.NODE_ENV || "development";
 export const JWT_SECRET = process.env.JWT_SECRET || "secret";
 
 export const DATABASE_URL = process.env.DATABASE_URL!;
+
+export const PACKAGE_VERSION =
+  process.env.npm_package_version || "Not Specified";

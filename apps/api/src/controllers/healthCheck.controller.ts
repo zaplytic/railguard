@@ -1,23 +1,20 @@
 import { Request, Response } from "express";
 import { HealthCheckResponse, ServiceHealth } from "@railguard/types";
 import { singleton } from "tsyringe";
+import HealthCheckService from "@/services/healthCheck.service";
+import { PACKAGE_VERSION } from "@/config/secrets";
 
 @singleton()
 export default class HealthCheckController {
-  constructor() {}
+  constructor(private readonly healthCheckService: HealthCheckService) {}
 
-  async handleHealthCheck(_req: Request, res: Response) {
-    const appVersion: string = process.env.npm_package_version || "1.0.0";
+  handleHealthCheck = async (_req: Request, res: Response) => {
+    const appVersion: string = PACKAGE_VERSION;
     const appUptime: number = process.uptime();
 
-    const services: ServiceHealth[] = [
-      {
-        name: "Database (Postgres)",
-        status: "healthy",
-        message: "Connection successful",
-        responseTime: 10,
-      },
-    ];
+    const dbHealth = await this.healthCheckService.dbHealthCheck();
+
+    const services: ServiceHealth[] = [dbHealth];
 
     let overallStatus: HealthCheckResponse["status"] = "healthy";
     if (services.some((s) => s.status === "unhealthy")) {
@@ -35,5 +32,5 @@ export default class HealthCheckController {
     };
 
     res.status(200).json(healthCheckResponse);
-  }
+  };
 }
