@@ -1,0 +1,19 @@
+{
+  "name": "@railguard/schema",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Centralized schema for the railguard project",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo No tests specified && exit 0",
+    "lint": "eslint . --ext .ts",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "drizzle-orm": "^0.44.4"
+  },
+  "license": "MIT"
+}
