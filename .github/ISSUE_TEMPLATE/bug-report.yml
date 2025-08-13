@@ -1,51 +1,65 @@
-name: Bug Report
-description: Report a bug
-labels: ["bug"]
+name: "🐛 Bug Report"
+description: "Create a report to help us improve"
+labels: ["bug", "needs-triage"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Please fill out the sections below to help everyone identify and fix the bug
-  - type: dropdown
-    id: platform
-    attributes:
-      label: Platform
-      options:
-        - iOS
-        - Android
-        - Web
-        - Other
-    validations:
-      required: true
   - type: textarea
     id: description
     attributes:
-      label: Describe your issue
-      placeholder: When I click here this happens
+      label: "Description"
+      description: "A clear and concise description of what the bug is."
     validations:
       required: true
   - type: textarea
-    id: steps
+    id: steps-to-reproduce
     attributes:
-      label: Steps to reproduce
+      label: "Steps to Reproduce"
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: "Expected Behavior"
+    validations:
+      required: true
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: "Actual Behavior"
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: "Severity"
+      description: "How critical is this bug?"
+      options:
+        - "Critical (Showstopper, blocks development/testing)"
+        - "High (Major functionality is broken)"
+        - "Medium (Minor functionality is broken or user-facing issue)"
+        - "Low (Trivial issue, nice to have)"
+    validations:
+      required: true
+  - type: dropdown
+    id: affected-packages
+    attributes:
+      label: "Affected Packages"
+      multiple: true
+      options:
+        - "api"
+        - "ingestor"
+        - "worker"
+        - "web"
+        - "mobile"
+        - "docs"
+        - "repo"
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: "Environment (Optional)"
+      description: "Please provide details about the environment you're running in."
       placeholder: |
-        1. Go to page X
-        2. Click here
-        3. Click there
-    validations:
-      required: true
-  - type: textarea
-    id: expected
-    attributes:
-      label: What was the expected result?
-      placeholder: I expected this to happen
-    validations:
-      required: true
-  - type: textarea
-    id: screenshots
-    attributes:
-      label: Put here any screenshots or videos (optional)
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for reporting this issue! We will get back to you as soon as possible.
+        - OS: [e.g., macOS, Windows, Linux]
+        - Browser: [e.g., Chrome, Firefox]
+        - App Version: [e.g., 1.0.0]
