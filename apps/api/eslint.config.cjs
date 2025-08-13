@@ -24,16 +24,18 @@ module.exports = [
         describe: 'readonly',
         it: 'readonly',
         expect: 'readonly',
-        test: 'readonly'
+        test: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
       }
     },
     plugins: {
-      '@typescript-eslint': typescript
+      '@typescript-eslint': typescript,
     },
     rules: {
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/no-unused-vars': 'error',
-      'no-unused-vars': 'off'
+      'no-unused-vars': 'off',
     }
   }
 ];
