@@ -6,6 +6,9 @@ dist/
 apps/*/dist/
 libs/*/dist/
 
+Gemini.md
+Claude.md
+
 coverage/
 apps/**/coverage/
 libs/**/coverage/
