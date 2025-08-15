@@ -23,7 +23,8 @@
     "clean:cache": "yarn clean && rm -rf ~/.cache/yarn && rm -rf apps/*/.expo && rm -rf apps/*/dist && rm -rf apps/*/build",
     "clean:all": "yarn clean && yarn clean:cache && rm -rf yarn.lock && rm -rf apps/*/yarn.lock && rm -rf libs/*/yarn.lock",
     "reset": "yarn clean && yarn install",
-    "hard-reset": "yarn clean:all && yarn install"
+    "hard-reset": "yarn clean:all && yarn install",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
@@ -42,6 +43,7 @@
     "eslint-plugin-prettier": "^5.5.3",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "husky": "^9.1.7",
     "jest": "^30.0.4",
     "nodemon": "^3.1.10",
     "pino-pretty": "^13.0.0",
